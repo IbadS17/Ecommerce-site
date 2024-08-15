@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './conponent/login/login.component';
 import { authInterceptorProvider } from './service/auth.interceptor';
 import { OrdersaverComponent } from './conponent/ordersaver/ordersaver.component';
+import { HomeComponent } from './conponent/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OrdersaverComponent } from './conponent/ordersaver/ordersaver.component
     CheckoutformComponent,
     LoginComponent,
     OrdersaverComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,23 +21,23 @@ export class WhishlistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.whishlist = this.whishlistService.getWhishlist();
+    this.whishlist = this.whishlistService.getWhislist();
     console.log(this.whishlist);
 
-    this.totalitemofwhislist = this.whishlistService.getWhishlist().length;
+    this.totalitemofwhislist = this.whishlistService.getWhislist().length;
   }
   deleteitemthis(temp: any) {
-    this.whishlistService.deleteitemFromWhishlist(temp);
-    this.whishlist = this.whishlistService.getWhishlist();
-    this.totalitemofwhislist = this.whishlistService.getWhishlist().length;
+    this.whishlistService.deleteitemFromWhistlist(temp);
+    this.whishlist = this.whishlistService.getWhislist();
+    this.totalitemofwhislist = this.whishlistService.getWhislist().length;
   }
 
   additemtocart(temp: any) {
     temp.quantity++;
     this.cartServcie.additemtocart(temp);
-    this.whishlistService.deleteitemFromWhishlist(temp);
-    this.whishlist = this.whishlistService.getWhishlist();
-    this.totalitemofwhislist = this.whishlistService.getWhishlist().length;
+    this.whishlistService.deleteitemFromWhistlist(temp);
+    this.whishlist = this.whishlistService.getWhislist();
+    this.totalitemofwhislist = this.whishlistService.getWhislist().length;
     this.cartServcie.gettotalitem();
   }
 }

@@ -1,10 +1,12 @@
 <nav class="flex flex-wrap items-center justify-between p-4 bg-white">
   <div class="flex items-center space-x-4">
-    <img
-      src="https://openui.fly.dev/openui/logo.svg?text=M"
-      alt="Logo"
-      class="h-8 w-auto"
-    />
+    <a routerLink="/">
+      <img
+        src="https://openui.fly.dev/openui/logo.svg?text=M"
+        alt="Logo"
+        class="h-8 w-auto"
+      />
+    </a>
     <ul class="hidden md:flex space-x-6 text-gray-500 font-bold">
       <ng-container *ngFor="let temp of MainCat">
         <li>
@@ -43,7 +45,7 @@
       ></a>
       <span
         class="absolute -top-2 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5"
-        >{{ totalwhislistitem }}</span
+        >{{ totalWhislistItem }}</span
       >
     </div>
     <div class="relative">
@@ -52,7 +54,7 @@
       ></a>
       <span
         class="absolute -top-2 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5"
-        >{{ totalcartitem }}</span
+        >{{ totalCartItem }}</span
       >
     </div>
   </div>

@@ -5,52 +5,64 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class WhishlistService {
-  private wishlist: any[] = [];
-
+  whishlist: any[] = [];
   totalWhishListItem: Subject<number> = new Subject<number>();
 
   constructor() {
-    // Load the wishlist from localStorage on initialization
-    const storedWishlist = localStorage.getItem('wishlist');
-    if (storedWishlist) {
-      this.wishlist = JSON.parse(storedWishlist);
-      this.totalWhishListItem.next(this.wishlist.length);
+    // Load the wishlist items from localStorage on initialization
+    const storedWhishlistItems = localStorage.getItem('whishlistItems');
+    if (storedWhishlistItems) {
+      this.whishlist = JSON.parse(storedWhishlistItems);
     }
+    // Emit the initial count
+    this.totalWhishListItem.next(this.whishlist.length);
   }
 
   addtowhishlist(theitem: any): boolean {
     let alreadyExist = false;
     let existitem: any;
 
-    if (this.wishlist.length > 0) {
-      for (let temp of this.wishlist) {
+    if (this.whishlist.length > 0) {
+      for (let temp of this.whishlist) {
         if (temp.id === theitem.id) {
           existitem = temp;
           break;
         }
       }
     }
+
     alreadyExist = existitem != null;
     if (alreadyExist) {
-      console.log('Already added in wishlist');
+      console.log('already added in wishlist');
       return false;
     } else {
-      this.wishlist.push(theitem);
-      // Store the updated wishlist in localStorage
-      localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
-      this.totalWhishListItem.next(this.wishlist.length);
+      this.whishlist.push(theitem);
+
+      // Store the updated wishlist in localStorage and update total
+      localStorage.setItem('whishlistItems', JSON.stringify(this.whishlist));
+      this.totalWhishListItem.next(this.whishlist.length);
+
       return true;
     }
   }
 
-  getWhishlist() {
-    return this.wishlist;
+  getWhislist() {
+    this.totalWhishListItem.next(this.whishlist.length);
+    return this.whishlist;
   }
 
-  deleteitemFromWhishlist(theitem: any) {
-    this.wishlist = this.wishlist.filter((temp) => temp.id !== theitem.id);
-    // Update localStorage and notify subscribers
-    localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
-    this.totalWhishListItem.next(this.wishlist.length);
+  deleteitemFromWhistlist(theitem: any) {
+    let newWhishlist = [];
+    for (let temp of this.whishlist) {
+      if (temp.id != theitem.id) {
+        newWhishlist.push(temp);
+      }
+    }
+
+    this.whishlist = newWhishlist;
+
+    // Update the wishlist in localStorage and emit the updated count
+    localStorage.setItem('whishlistItems', JSON.stringify(this.whishlist));
+    this.totalWhishListItem.next(this.whishlist.length);
   }
 }

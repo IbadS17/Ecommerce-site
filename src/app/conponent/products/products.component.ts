@@ -243,7 +243,7 @@ export class ProductsComponent implements OnInit {
     } else {
       alert('already exist');
     }
-    this.whishlistService.getWhishlist();
+    this.whishlistService.getWhislist();
   }
 }
 function checker(tester: any, temp: any) {

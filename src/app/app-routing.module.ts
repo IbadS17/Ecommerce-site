@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryComponent } from './conponent/category/category.component';
-import { ProductsComponent } from './conponent/products/products.component';
-import { ProductdetailComponent } from './conponent/productdetail/productdetail.component';
-import { WhishlistComponent } from './conponent/whishlist/whishlist.component';
 import { CartstatusComponent } from './conponent/cartstatus/cartstatus.component';
+import { CategoryComponent } from './conponent/category/category.component';
 import { CheckoutformComponent } from './conponent/checkoutform/checkoutform.component';
+import { HomeComponent } from './conponent/home/home.component';
 import { LoginComponent } from './conponent/login/login.component';
 import { OrdersaverComponent } from './conponent/ordersaver/ordersaver.component';
+import { ProductdetailComponent } from './conponent/productdetail/productdetail.component';
+import { ProductsComponent } from './conponent/products/products.component';
+import { WhishlistComponent } from './conponent/whishlist/whishlist.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'category/:name', component: CategoryComponent, pathMatch: 'full' },
   { path: 'product/:name', component: ProductsComponent },
   { path: 'productdetails/:id', component: ProductdetailComponent },

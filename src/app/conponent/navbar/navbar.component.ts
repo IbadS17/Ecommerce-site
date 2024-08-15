@@ -17,8 +17,9 @@ export class NavbarComponent implements OnInit {
       parentCourseCategory: null,
     },
   ];
-  totalwhislistitem = 0;
-  totalcartitem = 0;
+  totalWhislistItem = 0;
+  totalCartItem = 0;
+
   constructor(
     private categoryService: CategoryService,
     private whishlistService: WhishlistService,
@@ -36,13 +37,20 @@ export class NavbarComponent implements OnInit {
       }
     );
 
+    // Wishlist Tracker
     this.whishlistService.totalWhishListItem.subscribe((data: any) => {
-      this.totalwhislistitem = data;
+      this.totalWhislistItem = data;
     });
 
+    // Cart Tracker
     this.cartService.totalitemofcart.subscribe((data: any) => {
-      this.totalcartitem = data;
+      this.totalCartItem = data;
     });
+
+    // Manually trigger the emission of the initial cart item count
+    this.cartService.totalitemofcart.next(
+      this.cartService.getCartItem().length
+    );
   }
 
   testerSearch(va: any) {
