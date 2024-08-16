@@ -9,6 +9,7 @@ import { WhishlistService } from 'src/app/service/whishlist.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
+[x: string]: any;
   products = [
     {
       id: 104,
